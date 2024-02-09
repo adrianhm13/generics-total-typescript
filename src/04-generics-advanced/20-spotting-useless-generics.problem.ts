@@ -1,10 +1,14 @@
 import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
-const returnBothOfWhatIPassIn = <T1, T2>(params: {
-  a: T1;
-  b: T2;
-}): [T1, T2] => {
+type TParams = {
+  a: unknown;
+  b: unknown;
+};
+
+const returnBothOfWhatIPassIn = <T extends TParams>(
+  params: T
+): [T["a"], T["b"]] => {
   return [params.a, params.b];
 };
 
